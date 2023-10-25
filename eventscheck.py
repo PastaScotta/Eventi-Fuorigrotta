@@ -2,15 +2,12 @@ from bs4 import BeautifulSoup
 import requests
 import time
 from datetime import datetime, timezone, date, timedelta
-import locale
-
 
 
 time_interval = 60 # 86400(in seconds) Specify the frequency of code execution
 tele_auth_token = "6763894837:AAFFj52q-g-arFORD7zoJTnUM3PZDhiq2TU" # Authentication token provided by Telegram bot
 tel_group_id = "eventi_fuorigrotta" # Telegram group name
 #data:
-locale.setlocale(locale.LC_TIME, 'it_IT.UTF-8')
 data_corrente = date.today()
 data_corrent_plus_1 = data_corrente + timedelta(days=1)
 nome_mese_abbreviato = data_corrente.strftime('%b')
