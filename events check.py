@@ -6,6 +6,7 @@ import locale
 
 
 
+time_interval = 60 # 86400(in seconds) Specify the frequency of code execution
 tele_auth_token = "6763894837:AAFFj52q-g-arFORD7zoJTnUM3PZDhiq2TU" # Authentication token provided by Telegram bot
 tel_group_id = "eventi_fuorigrotta" # Telegram group name
 #data:
@@ -103,7 +104,12 @@ def send_msg_on_telegram(lega, data, evento, info):
     else:
         print ("Could not send Message: status "+str(tel_resp))
 
-basket_search()
-calcio_search()
-mostra_search()
+while True:
+    orario_attuale = datetime.now().time()
+    if orario_attuale.hour == ora_desiderata and orario_attuale.minute == 00:
+        basket_search()
+        calcio_search()
+        mostra_search()
 
+    # Attendi un minuto prima di verificare nuovamente l'orario
+    time.sleep(time_interval)
